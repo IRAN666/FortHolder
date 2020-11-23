@@ -1,1 +1,1 @@
-# FortHolder
+# FortHolder - a simple game
