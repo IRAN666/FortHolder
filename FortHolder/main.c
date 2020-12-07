@@ -7,9 +7,6 @@
 int main(void){
 	_map map;
 	init(&map);
-	printf("fuck\n");
-	for(;;){
-		;
-	}
+	start_battle(&map);
 	return 0;
 }

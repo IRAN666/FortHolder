@@ -2,29 +2,60 @@
 #define VALUES_H_ 1
 
 #define LENGTH 128
+#define PLAYER_POSITION 64
 #define WIDTH 32
 #define LENGTH_BLOCK 16
 #define NUMBER_OF_UNITS 64
+#define FPS 40
+
+/*output*/
+#define OUTPUT_LOADING_X 36
+#define OUTPUT_LOADING_Y 16
+#define OUTPUT_LOADING_STRING_0 "L      OOOO     A    DDDD   III  N   N   GGG "
+#define OUTPUT_LOADING_STRING_1 "L     O    O   A A   D   D   I   NN  N  G    "
+#define OUTPUT_LOADING_STRING_2 "L     O    O  A   A  D   D   I   N N N  G  GG"
+#define OUTPUT_LOADING_STRING_3 "L     O    O  AAAAA  D   D   I   N  NN  G   G"
+#define OUTPUT_LOADING_STRING_4 "LLLLL  OOOO   A   A  DDDD   III  N   N   GGG "
+
+#define OUTPUT_GAME_STARTING_ENERGY_X 60
+#define OUTPUT_GAME_STARTING_ENERGY_Y 0
+#define OUTPUT_GAME_STARTING_FPS_X 120
+#define OUTPUT_GAME_STARTING_FPS_Y 0
+#define OUTPUT_GAME_STARTING_BLOOD_X 4
+#define OUTPUT_GAME_STARTING_BLOOD_Y 1
+#define OUTPUT_GAME_STARTING_ENERGY_LEFT_X 42
+#define OUTPUT_GAME_STARTING_ENERGY_LEFT_Y 1
+#define OUTPUT_GAME_STARTING_ENERGY_RIGHT_X 84
+#define OUTPUT_GAME_STARTING_ENERGY_RIGHT_Y 1
+#define OUTPUT_GAME_STARTING_ENERGY_LENGTH 41
+#define OUTPUT_GAME_STARTING_ENERGY_CHAR "??!"
+#define OUTPUT_GAME_STARTING_GPA_X 95
+#define OUTPUT_GAME_STARTING_GPA_Y 1
 
 /*blocks*/
-#define BLANK_CHAR ' '
 #define BLANK_CODE 0
-#define BLOCK_CHAR '#'
 #define BLOCK_CODE 1
-#define BLOCK_WINDOWS_CHAR '??!'
 #define BLOCK_WINDOWS_CODE 2
-#define BLOCK_FIRE_CHAR '^'
 #define BLOCK_FIRE_CODE 3
-#define BLOCK_STAIR_LEFT_CHAR '/'
 #define BLOCK_STAIR_LEFT_CODE 4
-#define BLOCK_STAIR_RIGHT_CHAR '\''
 #define BLOCK_STAIR_RIGHT_CODE 5
+
+#define UNKNOWN_CHAR '?'
+#define BLANK_CHAR ' '
+#define BLOCK_CHAR '#'
+#define BLOCK_WINDOWS_CHAR '??!'
+#define BLOCK_FIRE_CHAR '^'
+#define BLOCK_STAIR_LEFT_CHAR '/'
+#define BLOCK_STAIR_RIGHT_CHAR '\''
 
 /*player and enemy*/
 #define PLAYER_CHAR '$'
 
-/*bullet*/
-#define BULLET_1_CHAR '*'
+/*weapon*/
+#define NUNBER_ALL_WEAPON 18
+#define NUMBER_WEAPON_CARRIED 9
+#define WEAPON_1_CODE 1
+
 
 
 #endif
