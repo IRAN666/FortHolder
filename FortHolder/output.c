@@ -3,8 +3,10 @@
 #include"foundation.h"
 #include"output.h"
 
+int gotoxy(int x,int y);
+ 
 char print_string[LENGTH+1];
-
+char is_filled[LENGTH*WIDTH];
 int gotoxy(int x, int y){
 	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	COORD pos;
@@ -43,7 +45,12 @@ int output_game_starting(void){
 	gotoxy(OUTPUT_GAME_STARTING_GPA_X         ,OUTPUT_GAME_STARTING_GPA_Y);         printf("GPA:");
 	return 0;
 }
-
+int output_int(int t){
+	gotoxy(0,WIDTH+3);
+	printf("%d",map->player.x);
+	printf("                ");
+	return 0;
+}
 int output_string(char s[]){
 	gotoxy(0,WIDTH+5);
 	printf("%s",s);
@@ -60,6 +67,7 @@ int output_fps(int fps){
 int output_battle(_map* map){
 	int i,j;
 	int n;
+	output_int(int t);
 	/*calculate the starting point*/
 	n=map->player.x-PLAYER_POSITION;
 	if(n+LENGTH>map->length){
@@ -68,32 +76,45 @@ int output_battle(_map* map){
 	if(n<0){
 		n=0;
 	}
+	gotoxy(0,WIDTH+4);printf("%d",n);
 	
 	/*print map*/
+	/*
+	for(j=0;j<WIDTH;j++){
+		for(i=0;i<LENGTH;i++){
+			switch(map->p_map[i+n][j]){
+				case BLANK_CODE:
+					print_string[i+LENGTH*(WIDTH-j-1)]=BLANK_CHAR;
+					break;
+				case BLOCK_CODE:
+					print_string[i+LENGTH*(WIDTH-j-1)]=BLOCK_CHAR;
+					break;
+				default:
+					print_string[i+LENGTH*(WIDTH-j-1)]=UNKNOWN_CHAR;
+			}
+		}
+	}
+	gotoxy(0,3);
+	print_string[LENGTH*WIDTH]='\0';
+	printf("%s",print_string);*/
 	for(j=0;j<WIDTH;j++){
 		gotoxy(0,WIDTH+2-j);
 		for(i=0;i<LENGTH;i++){
 			switch(map->p_map[i+n][j]){
 				case BLANK_CODE:
-					print_string[i]=BLANK_CHAR;
+					printf(BLANK_CHAR);
 					break;
 				case BLOCK_CODE:
-					print_string[i]=BLOCK_CHAR;
+					printf(BLOCK_CHAR);
 					break;
 				default:
-					print_string[i]=UNKNOWN_CHAR;
+					printf(UNKNOWN_CHAR);
 			}
 		}
+		/*
 		print_string[LENGTH]='\0';
 		printf("%s",print_string);
+		*/
 	}
-	
-	/*print units*/
-	;
-	
-	/*print player*/
-	gotoxy(map->player.x-n,WIDTH+2-map->player.y);
-	printf("$");
-	
 	return 0;
 }

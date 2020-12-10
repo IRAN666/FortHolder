@@ -3,6 +3,7 @@
 #include<time.h>
 #include<windows.h>
 
+/**/
 DWORD starttime;
 DWORD Time;
 int start_battle(_map* map){
@@ -13,7 +14,12 @@ int start_battle(_map* map){
     output_battle(&map);
     output_fps(1000/(GetTickCount()-Time));
     for(;;){
-    	;
+        map->player.x++;
+        
+        output_battle(&map);
+        Sleep(20);
+        output_fps(1000/(GetTickCount()-Time+1));
+		Time=GetTickCount();
 	}
     map_free(&map);
 /*	for(;;){

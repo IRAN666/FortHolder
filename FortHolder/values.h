@@ -40,9 +40,9 @@
 #define BLOCK_STAIR_LEFT_CODE 4
 #define BLOCK_STAIR_RIGHT_CODE 5
 
-#define UNKNOWN_CHAR '?'
-#define BLANK_CHAR ' '
-#define BLOCK_CHAR '#'
+#define UNKNOWN_CHAR "?"
+#define BLANK_CHAR " "
+#define BLOCK_CHAR "#"
 #define BLOCK_WINDOWS_CHAR '??!'
 #define BLOCK_FIRE_CHAR '^'
 #define BLOCK_STAIR_LEFT_CHAR '/'

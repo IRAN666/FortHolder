@@ -31,7 +31,7 @@ int make_blank_file(_map* map){
 	int i,j;
 	for(i=0;i<map->length;i++){
 		for(j=0;j<WIDTH;j++){
-			map->p_map[i][j]=j==8?1:0;
+			map->p_map[i][j]=j<8?1:0;
 		}
 	}
 	return 0;
