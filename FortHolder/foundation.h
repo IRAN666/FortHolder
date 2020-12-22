@@ -7,34 +7,49 @@ typedef struct __unit{
 	struct __unit* next_unit;
 	int type;
 	int n;
+	int buff;
+	int owner;
 	int blood;
 	int x;int y;
 	int _x;int _y;
+	int v_x;int v_y;
 }_unit;
-/*real x equals ta x+_x/1000 */
+/*real x equals ta x+_x/1024 */
 
 typedef struct __player{
 	int blood;
 	int energy;
 	int point;
-	int press_length;
+	int jump_state;
+	int press_weapon;
+	int press_status[5];
+	int press_length[5];
 	int weapon[9];
 	int weapon_chosen;
+	int buff;
 	int x;int y;
 	int _x;int _y;
+	int v_x;int v_y;
 }_player;
-/*point from 100(1.00) to 430(4.30) 
-  defined by your playing time and your blood :) */
+/*
+ *point from 100(1.00) to 430(4.30) 
+ *defined by your playing time and your blood :) 
+ *press_length[0] is the length of press space
+ *1 for 'A',2 for 'S',3 for 'D',4 for 'W'
+ *each bit of "buff" means a buff 
+ */
+  
 
+/*
 typedef struct __data{
 	int chapter;
 	int gpa;
 }_data;
-
+*/
 typedef struct __map{
 	_player player;
 	char (*p_map)[WIDTH];
-	_data data;
+	int gpa;
 	_unit *p_unit;
 	int length;
 	int real_fps;
