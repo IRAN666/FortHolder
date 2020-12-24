@@ -19,7 +19,9 @@ int move_unit(_map* map,_unit* unit);
 int judge_legel(_map* map,int x,int y,int type_code);
 /*0 is legel to mave to,1 is illegel to move,4 is left_stair,5 is right_stair*/
 
-int fire_bullet(_map* map,int kind,int x,int y);
-int kill_unit(_map* map,_unit* previous_unit);
+int add_unit(_map* map,int x,int y,int _x,int _y,int type_code);
+int attack_player(_map* map,int hurt);
+int attack_unit(_map* map,_unit* unit,int hurt);
+int kill_unit(_map* map,_unit* unit);
 
 #endif

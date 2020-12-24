@@ -51,15 +51,16 @@
 #define BLOCK_CODE 1
 #define BLOCK_DAMAGED_CODE 2
 #define BLOCK_WINDOWS_CODE 3
-#define BLOCK_LADDER_CODE 4
-#define BLOCK_STAIR_LEFT_CODE 5
-#define BLOCK_STAIR_RIGHT_CODE 6
+#define BLOCK_HIDDEN_CODE 4
+#define BLOCK_LADDER_CODE 5
+#define BLOCK_STAIR_LEFT_CODE 6
+#define BLOCK_STAIR_RIGHT_CODE 7
 
 #define UNKNOWN_CHAR '?'
 #define BLANK_CHAR ' '
 #define BLOCK_CHAR '#'
 #define BLOCK_WINDOWS_CHAR '|'
-#define BLOCK_LADDER_CHAR '^'
+#define BLOCK_LADDER_CHAR 'H'
 #define BLOCK_STAIR_LEFT_CHAR '/'
 #define BLOCK_STAIR_RIGHT_CHAR '\''
 
@@ -67,15 +68,24 @@
 #define PLAYER_CHAR '$'
 
 /*weapon*/
-#define NUNBER_ALL_WEAPON 16
+#define NUMBER_WEAPON 16
 #define NUMBER_WEAPON_CARRIED 9
+#define IF_WEAPON(type_code) type_code>=WEAPON_1_CODE&&type_code<WEAPON_1_CODE+NUMBER_WEAPON
+extern char weapon_char[16];
+
+/*enemy*/
+#define NUMBER_ENEMY 4
+extern char enemy_char[4];
 
 /*can/can't move*/
 #define CANMOVE 1
 /*type code*/
 #define PLAYER_CODE 0
 #define BOUND_TEST_CODE 1
-#define BACKGROUND_CODE 2 
+#define BACKGROUND_CODE 2
+#define BUILD_CODE 3
+#define WEAPON_1_CODE 4
+#define ENENY_1_CODE 20
 
 
 #endif

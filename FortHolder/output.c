@@ -84,17 +84,22 @@ int output_choose_weapon(_map* map){
 	;
 }
 int output_battle(_map* map){
-	output_battle_init();
 	int i,j;
-	int n;
+	int n,_n;
+	_unit* p_unit;
+	
+	output_battle_init();
 	
 	/*calculate the starting point*/
 	n=map->player.x-PLAYER_POSITION;
+	_n=map->player._x/128;
 	if(n+LENGTH>map->length){
 		n=map->length-LENGTH;
+		_n=0;
 	}
 	if(n<0){
 		n=0;
+		_n=0;
 	}
 	/*print map*/
 	output_int(n);
@@ -115,13 +120,33 @@ int output_battle(_map* map){
 		}
 		
 		print_string[LENGTH]='\0';
-		xyprintf(0,UNIT_WIDTH*(WIDTH+2-j),"%s",print_string);
+		xyprintf(-_n,UNIT_WIDTH*(WIDTH+2-j),"%s",print_string);
 		
     }
-    
+    /*print unit*/
+    int u_x;
+    for(p_unit=map->p_unit;p_unit!=NULL;p_unit=p_unit->next_unit){
+    	u_x=p_unit->x-n;
+    	if(u_x>=0 && u_x<LENGTH){
+    		if(IF_WEAPON(p_unit->type)){
+    	    	xyprintf(UNIT_LENGTH*u_x+p_unit->_x/128-_n,
+	              UNIT_WIDTH*(WIDTH+2-p_unit->y)-p_unit->_y/64,
+				  "%c",weapon_char[p_unit->type-WEAPON_1_CODE]);
+			
+		    }
+		}
+    	
+	}
     /*print player*/
     setcolor(EGERGB(218,178,115));
-    xyprintf(UNIT_LENGTH*(map->player.x-n),UNIT_WIDTH*(WIDTH+2-map->player.y),"%c",PLAYER_CHAR);
+    if(_n){
+	    xyprintf(UNIT_LENGTH*PLAYER_POSITION,
+		        UNIT_WIDTH*(WIDTH+2-map->player.y)-map->player._y/64,"%c",PLAYER_CHAR);
+	}else{
+	    xyprintf(UNIT_LENGTH*(map->player.x-n)+map->player._x/128,
+		        UNIT_WIDTH*(WIDTH+2-map->player.y)-map->player._y/64,"%c",PLAYER_CHAR);
+	}
+    
     
     /*print fps*/
     output_fps(map->real_fps);
@@ -131,8 +156,8 @@ int output_battle(_map* map){
 	return 0;
 }
 int input_battle(_map* map){
-	int key=5;
-	memset(map->player.press_status,0,5*sizeof(int));
+	int i;
+	/*int key=5;
 	while(kbmsg()){
 		kMsg=getkey();
 		switch(kMsg.key){
@@ -152,9 +177,71 @@ int input_battle(_map* map){
 			}
 		}
 	}
-	if(key==5){
+    if(key==5){
 		memset(map->player.press_length,0,5*sizeof(int));
 		return 0;
 	}
+	flushkey();
+	*/
+	if(keystate('A')){
+		map->player.press_status[1]=1;
+		map->player.press_length[1]++;
+	}else{
+		map->player.press_status[1]=0;
+		map->player.press_length[1]=0;
+	}
+	if(keystate('S')){
+		map->player.press_status[2]=1;
+		map->player.press_length[2]++;
+	}else{
+		map->player.press_status[2]=0;
+		map->player.press_length[2]=0;
+	}
+	if(keystate('D')){
+		map->player.press_status[3]=1;
+		map->player.press_length[3]++;
+	}else{
+		map->player.press_status[3]=0;
+		map->player.press_length[3]=0;
+	}
+	if(keystate('W')){
+		map->player.press_status[4]=1;
+		map->player.press_length[4]++;
+	}else{
+		map->player.press_status[4]=0;
+		map->player.press_length[4]=0;
+	}
+	if(keystate(' ')||keystate('J')){
+		switch(map->player.press_status[0]){
+			case 1:
+				map->player.press_length[0]++;
+				break;
+			case 0: case 2:
+			default:
+				map->player.press_status[0]=1;
+				map->player.press_length[0]=1;
+		}
+	}else{
+		switch(map->player.press_status[0]){
+			case 0:
+				map->player.press_length[0]=0;
+				break;
+			case 1:
+				map->player.press_status[0]=2;
+				break;
+			case 2:
+				map->player.press_status[0]=0;
+				break;
+			default:
+				;
+		}
+	}
+	for(i=0;i<9;i++){
+		if(keystate('1'+i)){
+			map->player.press_weapon=i;
+			break;
+		}
+	}
+    flushkey();
 	return 1;
 }

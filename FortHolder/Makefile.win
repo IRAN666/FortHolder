@@ -5,8 +5,8 @@ CPP      = g++.exe -D__DEBUG__
 CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
 RES      = obj/FortHolder_private.res
-OBJ      = obj/files.o obj/foundation.o obj/game.o obj/init.o obj/main.o obj/output.o $(RES)
-LINKOBJ  = obj/files.o obj/foundation.o obj/game.o obj/init.o obj/main.o obj/output.o $(RES)
+OBJ      = obj/files.o obj/values.o obj/game.o obj/init.o obj/main.o obj/output.o $(RES)
+LINKOBJ  = obj/files.o obj/values.o obj/game.o obj/init.o obj/main.o obj/output.o $(RES)
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -lgraphics64 -luuid -lmsimg32 -lgdi32 -limm32 -lole32 -loleaut32 -lwinmm -lgdiplus -mwindows -g3
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -28,8 +28,8 @@ $(BIN): $(OBJ)
 obj/files.o: files.c
 	$(CPP) -c files.c -o obj/files.o $(CXXFLAGS)
 
-obj/foundation.o: foundation.c
-	$(CPP) -c foundation.c -o obj/foundation.o $(CXXFLAGS)
+obj/values.o: values.c
+	$(CPP) -c values.c -o obj/values.o $(CXXFLAGS)
 
 obj/game.o: game.c
 	$(CPP) -c game.c -o obj/game.o $(CXXFLAGS)

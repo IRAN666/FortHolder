@@ -5,10 +5,10 @@
 
 typedef struct __unit{
 	struct __unit* next_unit;
+	struct __unit* pre_unit;
 	int type;
 	int n;
 	int buff;
-	int owner;
 	int blood;
 	int x;int y;
 	int _x;int _y;
@@ -21,11 +21,12 @@ typedef struct __player{
 	int energy;
 	int point;
 	int jump_state;
-	int press_weapon;
-	int press_status[5];
+	char press_weapon;
+	char press_status[5];
 	int press_length[5];
-	int weapon[9];
-	int weapon_chosen;
+	char weapon[9];
+	char freeze_time[9];
+	char weapon_chosen;
 	int buff;
 	int x;int y;
 	int _x;int _y;
