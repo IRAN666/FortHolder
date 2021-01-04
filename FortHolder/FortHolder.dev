@@ -28,7 +28,7 @@ Folders=
 IncludeVersionInfo=1
 SupportXPThemes=0
 CompilerSet=0
-CompilerSettings=0000000000000000001000000
+CompilerSettings=0000000000100000001000000
 UnitCount=12
 
 [VersionInfo]
@@ -71,7 +71,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit3]
-FileName=foundation.c
+FileName=values.c
 CompileCpp=1
 Folder=
 Compile=1

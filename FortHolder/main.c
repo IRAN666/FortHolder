@@ -9,9 +9,10 @@
 int main(void){
 	_map map;
 	init(&map);
-	start_battle(&map);
+	
 	for(;;){
-		;
+		choose_weapon(&map);
+	    start_battle(&map);
 	}
 	return 0;
 }

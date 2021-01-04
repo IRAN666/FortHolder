@@ -5,6 +5,7 @@
 int output_interface(void);
 int output_init(void);
 int output_clear(void);
+int output_die(_map* map);
 int output_loading(int progress);
 int output_game_starting(void);
 int output_menu(_map* map);
